@@ -1,8 +1,10 @@
+import * as actionTypes from "./actions";
+
 const initialState = { counter: 0, results: [] };
 
 const reducer = (state = initialState, action) => {
   switch (action.type) {
-    case "INCREMENT":
+    case actionTypes.INCREMENT:
       /*
         Do not do this.  
           const newState = state // This is mutating the current state because we are simply referencing the state object.
@@ -16,7 +18,7 @@ const reducer = (state = initialState, action) => {
       newState.counter = state.counter + 1;
       return newState; // This then becomes the new state
 
-    case "DECREMENT":
+    case actionTypes.DECREMENT:
       // Here is another way to clone the object directly is by distributing the properties of the old state, and then updating the property.
       return {
         // This would be creating a new object and populating it with properties of the original state.
@@ -27,18 +29,18 @@ const reducer = (state = initialState, action) => {
         // we are leaving results array untouched.)
         counter: state.counter - 1
       };
-    case "ADD":
+    case actionTypes.ADD:
       return {
         ...state,
         counter: state.counter + action.val
       };
-    case "SUBTRACT":
+    case actionTypes.SUBTRACT:
       return {
         ...state,
         counter: state.counter - action.val
       };
 
-    case "STORE_RESULT":
+    case actionTypes.STORE_RESULT:
       return {
         // Here we update immutably by using .concat() instead of .push()
         // Where as .push manipulates (updates) the original state (ie mutates it),
@@ -58,7 +60,7 @@ const reducer = (state = initialState, action) => {
       return updatedState;
       */
 
-    case "DELETE_RESULT":
+    case actionTypes.DELETE_RESULT:
       /* Do not do this way.  'splice()' mutates
           const id = 2
           state.results.splice(id, 1)  // This 'mutates' the original array.
