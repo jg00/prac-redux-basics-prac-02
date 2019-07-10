@@ -38,7 +38,7 @@ const reducer = (state = initialState, action) => {
 
     case "STORE_RESULT":
       let updatedState = { ...state };
-      let updatedResults = updatedState.results;
+      let updatedResults = [...updatedState.results];
       updatedResults.push(updatedState.counter);
       console.log(updatedState);
       console.log(updatedResults);
