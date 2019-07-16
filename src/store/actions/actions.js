@@ -22,6 +22,12 @@ export const subtract = value => {
 };
 
 export const storeResult = res => {
+  /*
+    Simulate prior to action (action to store result) that 
+    we reached out to the server to store the result there
+    and only update our state once this is successful.
+  */
+
   return { type: STORE_RESULT, result: res };
 };
 
