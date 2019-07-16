@@ -5,7 +5,8 @@ import CounterControl from "../../components/CounterControl/CounterControl";
 import CounterOutput from "../../components/CounterOutput/CounterOutput";
 
 // import { increment } from "../../store/actions/actions"; // Import functions individually
-import * as actionCreators from "../../store/actions/actions";
+// import * as actionCreators from "../../store/actions/actions";
+import * as actionCreators from "../../store/actions/index"; // index simply has the actions from different files grouped into this one.
 
 // import * as actionTypes from "../../store/actions";
 

@@ -1,25 +1,4 @@
-export const INCREMENT = "INCREMENT";
-export const DECREMENT = "DECREMENT";
-export const ADD = "ADD";
-export const SUBTRACT = "SUBTRACT";
-export const STORE_RESULT = "STORE_RESULT";
-export const DELETE_RESULT = "DELETE_RESULT";
-
-export const increment = () => {
-  return { type: INCREMENT };
-};
-
-export const decrement = () => {
-  return { type: DECREMENT };
-};
-
-export const add = value => {
-  return { type: ADD, val: value };
-};
-
-export const subtract = value => {
-  return { type: SUBTRACT, val: value };
-};
+import * as actionTypes from "./actionTypes";
 
 /*
     storeResult:
@@ -43,7 +22,7 @@ export const subtract = value => {
 
 // saveResult is our 'synchronous' action creator
 export const saveResult = res => {
-  return { type: STORE_RESULT, result: res };
+  return { type: actionTypes.STORE_RESULT, result: res };
 };
 
 // This action creator is only possible due to redux-thunk and are called in between.
@@ -56,10 +35,10 @@ export const storeResult = res => {
     // Asycn code
     setTimeout(() => {
       /*
-            Now we would create and infinite loop if we dispatch 'storeResult' ie our action creator.
-            - So what we typically do is we 'create asynchronous action creators' which in the end
-            dispatches actions created by synchronous ones.
-        */
+              Now we would create and infinite loop if we dispatch 'storeResult' ie our action creator.
+              - So what we typically do is we 'create asynchronous action creators' which in the end
+              dispatches actions created by synchronous ones.
+          */
       dispatch(saveResult(res)); // Here we can now dispatch whatever action we want to dispatch which actually updates the state in the store.
     }, 2000);
   };
@@ -69,5 +48,5 @@ export const storeResult = res => {
 };
 
 export const deleteResult = resElId => {
-  return { type: DELETE_RESULT, resultElId: resElId };
+  return { type: actionTypes.DELETE_RESULT, resultElId: resElId };
 };
