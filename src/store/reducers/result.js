@@ -1,10 +1,17 @@
-import * as actionTypes from "../actions";
+import * as actionTypes from "../actions/actions";
 
 const initialState = { results: [] };
 
 const reducer = (state = initialState, action) => {
   switch (action.type) {
     case actionTypes.STORE_RESULT:
+      // Note that the reducer function has to run asynchronously
+      // You cannot run asynchronous code here because for example if you have a setTiemout that runs after two seconds, by then
+      // the switch statement is already done by then.
+      //    setTimeout(() => console.log("some async code"), 2000);
+
+      // We can howerver execute async code with the help of action creators.
+
       return {
         ...state,
         // results: state.results.concat({ id: new Date(), value: state.counter })  // replaced to get value as action payload
